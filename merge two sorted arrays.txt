@@ -1,0 +1,28 @@
+// vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
+//     int i, k;
+//     for (i=0; i<m; i++){
+//         if (arr1[i] > arr2[0]) swap(arr1[i], arr2[0]);
+//         //insert element in arr2 at correct place
+//         int first = arr2[0];
+//         for (k=1; k<n && arr2[k]<first; k++){
+//             arr2[k-1] = arr2[k];
+//         }
+//         arr2[k-1] = first;   
+//     }
+//     //insert elements of arr2 in arr1 at the end
+//     int l=0;
+//     for (int j=m; j<(m+n); j++){
+//         arr1[j] = arr2[l++];
+//     }
+//     return arr1;
+// }
+
+//optimized solution
+//we can use gap method too
+vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
+    for (int i=m; i<(m+n); i++){
+        arr1[i] = arr2[i - m];
+    }        
+    sort(arr1.begin(), arr1.end());
+    return arr1;
+}
