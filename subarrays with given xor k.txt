@@ -1,0 +1,12 @@
+int subarraysXor(vector<int> &arr, int x){
+    int count = 0, Xor = 0;
+    unordered_map<int,int> map;
+    for (int i = 0; i < arr.size(); i++){
+        Xor ^= arr[i];
+        if (Xor == x) count++;
+        int y = Xor ^ x;
+        if (map.count(y)) count += map[y];
+        map[Xor] += 1;
+    }
+    return count;
+}
